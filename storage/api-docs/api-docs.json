@@ -1,0 +1,174 @@
+{
+    "openapi": "3.0.0",
+    "info": {
+        "title": "Finance API",
+        "version": "1.0.0"
+    },
+    "servers": [
+        {
+            "url": "http://localhost:8080",
+            "description": "Local"
+        }
+    ],
+    "paths": {
+        "/api/v1/empreendimentos": {
+            "get": {
+                "tags": [
+                    "Empreendimentos"
+                ],
+                "summary": "Lista simples de empreendimentos",
+                "operationId": "8b6eaa1a628370db7c94e307d9b37c27",
+                "responses": {
+                    "200": {
+                        "description": "OK"
+                    }
+                }
+            },
+            "post": {
+                "tags": [
+                    "Empreendimentos"
+                ],
+                "summary": "Cria empreendimento",
+                "operationId": "68975df3eef0b6d3caa33a148e3eaaf0",
+                "requestBody": {
+                    "required": true,
+                    "content": {
+                        "application/json": {
+                            "schema": {
+                                "required": [
+                                    "nome",
+                                    "endereco",
+                                    "qtd_unidades",
+                                    "data_lancamento"
+                                ],
+                                "properties": {
+                                    "nome": {
+                                        "type": "string",
+                                        "example": "Residencial Vila Verde"
+                                    },
+                                    "endereco": {
+                                        "type": "string",
+                                        "example": "Rua das Palmeiras, 123 - SP"
+                                    },
+                                    "qtd_unidades": {
+                                        "type": "integer",
+                                        "example": 80
+                                    },
+                                    "data_lancamento": {
+                                        "type": "string",
+                                        "format": "date",
+                                        "example": "2025-02-01"
+                                    }
+                                },
+                                "type": "object"
+                            }
+                        }
+                    }
+                },
+                "responses": {
+                    "201": {
+                        "description": "Created"
+                    }
+                }
+            }
+        }
+    },
+    "components": {
+        "schemas": {
+            "Contrato": {
+                "required": [
+                    "id",
+                    "empreendimento_id",
+                    "cliente",
+                    "valor_total"
+                ],
+                "properties": {
+                    "id": {
+                        "type": "integer",
+                        "format": "int64",
+                        "example": 987
+                    },
+                    "empreendimento_id": {
+                        "type": "integer",
+                        "example": 1
+                    },
+                    "cliente": {
+                        "type": "string",
+                        "example": "Fulano da Silva"
+                    },
+                    "valor_total": {
+                        "type": "number",
+                        "format": "double",
+                        "example": 350000.75
+                    },
+                    "entrada": {
+                        "type": "number",
+                        "format": "double",
+                        "example": 35000,
+                        "nullable": true
+                    },
+                    "parcelas": {
+                        "type": "integer",
+                        "example": 120
+                    },
+                    "status": {
+                        "type": "string",
+                        "enum": [
+                            "aberto",
+                            "quitado",
+                            "inadimplente"
+                        ],
+                        "example": "aberto"
+                    },
+                    "assinatura_em": {
+                        "type": "string",
+                        "format": "date-time"
+                    }
+                },
+                "type": "object"
+            },
+            "Empreendimento": {
+                "description": "Empreendimento (domínio)",
+                "required": [
+                    "id",
+                    "nome"
+                ],
+                "properties": {
+                    "id": {
+                        "type": "integer",
+                        "format": "int64",
+                        "example": 1
+                    },
+                    "nome": {
+                        "type": "string",
+                        "maxLength": 255,
+                        "example": "Residencial Alfa"
+                    },
+                    "status": {
+                        "type": "string",
+                        "enum": [
+                            "ativo",
+                            "inativo"
+                        ],
+                        "example": "ativo"
+                    },
+                    "created_at": {
+                        "type": "string",
+                        "format": "date-time"
+                    },
+                    "updated_at": {
+                        "type": "string",
+                        "format": "date-time"
+                    }
+                },
+                "type": "object"
+            }
+        }
+    },
+    "tags": [
+        {
+            "name": "Empreendimentos",
+            "description": "Empreendimentos"
+        }
+    ]
+}
