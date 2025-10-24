@@ -17,7 +17,7 @@
                     "Empreendimentos"
                 ],
                 "summary": "Lista simples de empreendimentos",
-                "operationId": "8b6eaa1a628370db7c94e307d9b37c27",
+                "operationId": "613c8cf632de22dc93f601ee596006b7",
                 "responses": {
                     "200": {
                         "description": "OK"
@@ -29,7 +29,7 @@
                     "Empreendimentos"
                 ],
                 "summary": "Cria empreendimento",
-                "operationId": "68975df3eef0b6d3caa33a148e3eaaf0",
+                "operationId": "727279fff27e90ef320b354557ab7fe2",
                 "requestBody": {
                     "required": true,
                     "content": {
